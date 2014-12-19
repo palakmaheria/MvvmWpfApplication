@@ -1,0 +1,8 @@
+﻿<Application x:Class="MvvmWPFSample.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" StartupUri="Views\TestView.xaml"
+        xmlns:vm="clr-namespace:MvvmWPFSample.ViewModel">
+    <Application.Resources>
+        <vm:ViewModelLocator x:Key="Locator" />
+    </Application.Resources>
+</Application>
