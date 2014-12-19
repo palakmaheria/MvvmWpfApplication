@@ -82,9 +82,19 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomObjects\TestAResults.cs" />
+    <Compile Include="CustomObjects\TestBResults.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\TestAViewModel.cs" />
+    <Compile Include="ViewModel\TestBViewModel.cs" />
     <Compile Include="ViewModel\TestViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="Views\TestA.xaml.cs">
+      <DependentUpon>TestA.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TestB.xaml.cs">
+      <DependentUpon>TestB.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TestView.xaml.cs">
       <DependentUpon>TestView.xaml</DependentUpon>
     </Compile>
@@ -150,6 +160,14 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TestA.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TestB.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

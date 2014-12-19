@@ -45,6 +45,8 @@ namespace MvvmWPFSample.ViewModel
             ////}
 
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<TestAViewModel>();
+            SimpleIoc.Default.Register<TestBViewModel>();
             SimpleIoc.Default.Register<IUserRoles, UserRolesRepository>();
             SimpleIoc.Default.Register<TestViewModel>();
         }

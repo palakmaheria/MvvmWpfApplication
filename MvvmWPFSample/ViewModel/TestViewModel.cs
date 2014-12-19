@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Messaging;
+using MvvmWPFSample.CustomObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,14 +25,20 @@ namespace MvvmWPFSample.ViewModel
         /// user name
         /// </summary>
         private string userName;
+
+        private TestAViewModel testAViewModel;
+
+        private TestBViewModel testBViewModel;
         
         /// <summary>
         /// Constructor for test view model
         /// </summary>
         /// <param name="userRoles">User roles</param>
-        public TestViewModel(IUserRoles userRoles)
+        public TestViewModel(IUserRoles userRoles, TestAViewModel testAViewModel, TestBViewModel testBViewModel)
         {
             this.userRoles = userRoles;
+            this.testAViewModel = testAViewModel;
+            this.testBViewModel = testBViewModel;
             Messenger.Default.Register<string>(this, msg =>
             {
                 this.UserName = msg;
@@ -61,6 +68,9 @@ namespace MvvmWPFSample.ViewModel
                 this.RaisePropertyChanged("userName");
             }
         }
+
+        public TestAViewModel TestAViewModel { get { return this.testAViewModel; } set { this.testAViewModel = value; this.RaisePropertyChanged("TestAViewModel"); } }
+        public TestBViewModel TestBViewModel { get { return this.testBViewModel; } set { this.testBViewModel = value; this.RaisePropertyChanged("TestBViewModel"); } }
 
         /// <summary>
         /// Relay command associated with get names function
@@ -92,6 +102,7 @@ namespace MvvmWPFSample.ViewModel
         private void ExecuteUpdateNamesCommand()
         {
             Messenger.Default.Send("hello");
+            Messenger.Default.Send<TestBResults>(new TestBResults { Result = "TestB zzd fs" });
         }
 
         /// <summary>
@@ -100,6 +111,7 @@ namespace MvvmWPFSample.ViewModel
         private void ExecuteNamesCommand()
         {
             this.UserName = this.userRoles.GetUserName("");
+            Messenger.Default.Send<TestAResults>(new TestAResults{ Result = "TestA fgsdfd fs"});
         }
 
         /// <summary>
